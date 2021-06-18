@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <style>
+      body,
+      html {
+		margin: 0;
+        padding: 0;
+        height: 100%;
+        background-image: linear-gradient(125deg,  #ffffff 30%, #dc3545 70% );
+      }
+      .user_card {
+        height: 400px;
+        width: 350px;
+        margin-top: auto;
+        margin-bottom: auto;
+        background: transparent;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding: 10px;
+        box-shadow: 3px 0px 11px #000;
+        -webkit-box-shadow:  3px 0px 11px #000;
+        -moz-box-shadow:  3px 0px 11px #000;
+        border: 2px solid black;
+        border-radius: 5px;
+      }
+      .brand_logo_container {
+        position: absolute;
+        height: 170px;
+        width: 170px;
+        top: -75px;
+        border-radius: 50%;
+        background: transparent;
+        padding: 10px;
+        text-align: center;
+      }
+      .brand_logo {
+        height: 150px;
+        width: 150px;
+        border-radius: 50%;
+        border: 2px solid white;
+      }
+      .form_container {
+        margin-top: 100px;
+      }
+      .login_btn {
+        width: 100%;
+        background: #c0392b !important;
+        color: white !important;
+      }
+      .login_btn:focus {
+        box-shadow: none !important;
+        outline: 0px !important;
+      }
+      .btn-danger {
+        background: #c0392b !important;
+        border-color:#c0392b;
+        color: white !important;
+        margin-top:10px;
+      }
+      .login_danger:focus {
+        box-shadow: none !important;
+        outline: 0px !important;
+      }
+      .login_container {
+        padding: 0 2rem;
+      }
+      .input-group-text {
+        background: #c0392b !important;
+        color: white !important;
+        border: 0 !important;
+        border-radius: 0.25rem 0 0 0.25rem !important;
+      }
+      .input_user,
+      .input_pass:focus {
+        box-shadow: none !important;
+        outline: 0px !important;
+      }
+      .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+        background-color: #c0392b !important;
+      }
+      .modal-header{
+          background-color:#dc3545 ;
+          color: #fff;
+      }
+    </style>
+</head>
+<body>
+    <div class="container h-100">
+        <div class="d-flex justify-content-center h-100">
+          <div class="user_card">
+            <div class="d-flex justify-content-center">
+              <div class="brand_logo_container">
+                <img src="assets/Unilibre.png" class="brand_logo" alt="Logo">
+              </div>
+            </div>
+            <div class="d-flex justify-content-center form_container">
+              <form action="validar.php" method="POST">
+                <div class="input-group mb-3">
+                  <div class="input-group-append">
+                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                  </div>
+                  <input type="email" name="email" id="email" class="form-control input_user" placeholder="Ingrese email" required>
+                </div>
+                <div class="input-group mb-2">
+                  <div class="input-group-append">
+                    <span class="input-group-text"><i class="fas fa-key"></i></span>
+                  </div>
+                  <input type="password" name="password" id="password" class="form-control input_pass" placeholder="Ingrese password" required>
+                </div>
+                  <div class="d-flex justify-content-center mt-3 login_container">
+                    <button type="submit" name="button" class="btn login_btn">Ingresar</button>
+               </div>
+              </form>
+            </div>
+            <div class="mt-4">
+                <div class="d-flex justify-content-center links">
+                    ¿No tienes cuenta?
+                </div>
+                <div class="d-flex justify-content-center links">
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#registro">Registrarse</button>
+                </div>
+                <div class="d-flex justify-content-center links">
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#recuperacion">¿Olvidaste tu contraseña?</button>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="modal fade" id="registro" tabindex="-1" role="dialog" aria-labelledby="registro" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Registro usuario</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="registrar.php" class="was-validate">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                </div>
+                                <input type="email" name="email" id="email" class="form-control input_user" placeholder="Ingrese email" required>
+                            </div>
+                            <div class="valid-feedback">Valido</div>
+                            <div class="invalid-feedback">Por favor ingrese un email</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <div class="input-group mb-2">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                </div>
+                                <input type="password" name="password" id="password" class="form-control input_pass" placeholder="Ingrese password" required>
+                            </div>
+                            <div class="valid-feedback">Valido</div>
+                            <div class="invalid-feedback">Por favor ingrese un password</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="pregunta">Pregunta de seguridad</label>
+                            <div class="input-group mb-2">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fas fa-question"></i></span>
+                                </div>
+                                <select name="pregunta" id="pregunta" class="form-control">
+                                <option>¿Fecha de nacimiento?</option>
+                                <option>¿Nombre de tu mejor amigo?</option>
+                                <option>¿Donde conociste a tu pareja?</option>
+                                <option>¿Cómo se llama tu primo favorito?</option>
+                                <option>¿Cómo se llama tu mascota?</option>
+                            </select>
+                            </div>
+                            <div class="valid-feedback">Valido</div>
+                            <div class="invalid-feedback">Por favor ingrese una pregunta de seguridad</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="respuesta">Respuesta de seguridad</label>
+                            <div class="input-group mb-2">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fas fa-check"></i></span>
+                                </div>
+                                <input type="text" name="respuesta" id="respuesta" class="form-control input_pass" placeholder="Ingrese respuesta de seguridad" required>
+                            </div>
+                            <div class="valid-feedback">Valido</div>
+                            <div class="invalid-feedback">Por favor ingrese una respuesta de seguridad</div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="user" id="Profesor" value="Profesor">
+                                <label class="form-check-label" for="profesor">Profesor</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="user" id="Estudiante" value="Estudiante">
+                                <label class="form-check-label" for="estudiante">Estudiante</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="user" id="Visitante" value="Visitante">
+                                <label class="form-check-label" for="Visitante">Visitante</label>
+                            </div>
+                            <div class="valid-feedback">Valido</div>
+                            <div class="invalid-feedback">Por favor elija un tipo de usuario</div>
+                        </div>
+                        <button class="btn btn-success" type="submit">Registrar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="recuperacion" tabindex="-1" role="dialog" aria-labelledby="recuperacion" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Recuperar contraseña</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="cambiocontraseña.php" class="was-validate">
+                        <div class="form-group">
+                            <label for="email">Ingrese un email valido</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                </div>
+                                <input type="email" name="email" id="email" class="form-control input_user" placeholder="Ingrese email" required>
+                            </div>
+                            <div class="valid-feedback">Valido</div>
+                            <div class="invalid-feedback">Por favor ingrese un email</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="pregunta">Pregunta de seguridad</label>
+                            <div class="input-group mb-2">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fas fa-question"></i></span>
+                                </div>
+                                <select name="pregunta" id="pregunta" class="form-control">
+                                <option>¿Fecha de nacimiento?</option>
+                                <option>¿Nombre de tu mejor amigo?</option>
+                                <option>¿Donde conociste a tu pareja?</option>
+                                <option>¿Cómo se llama tu primo favorito?</option>
+                                <option>¿Cómo se llama tu mascota?</option>
+                            </select>
+                            </div>
+                            <div class="valid-feedback">Valido</div>
+                            <div class="invalid-feedback">Por favor ingrese una pregunta de seguridad</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="respuesta">Respuesta</label>
+                            <div class="input-group mb-2">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fas fa-check"></i></span>
+                                </div>
+                                <input type="text" name="respuesta" id="respuesta" class="form-control input_pass" placeholder="Ingrese su respuesta" required>
+                            </div>
+                            <div class="valid-feedback">Valido</div>
+                            <div class="invalid-feedback">Por favor ingrese una respuesta de seguridad</div>
+                        </div>
+                        <button class="btn btn-success" type="submit">Cambiar contraseña</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
